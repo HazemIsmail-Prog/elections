@@ -34,6 +34,10 @@ class VotingPage extends Component
     {
         $this->resetPage();
     }
+    public function updatedSelectedSection()
+    {
+        $this->resetPage();
+    }
 
     public function mount()
     {
