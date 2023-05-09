@@ -6,11 +6,8 @@
 
     <div class="p-3">
 
-        <div class="flex justify-start gap-3">
+        <div class="flex flex-col md:flex-row justify-start gap-3">
 
-            
-            <x-text-input wire:model="search" class="py-1 px-3 mb-3" type="text"
-            placeholder="{{ __('messages.search') }}" />
             
             <select wire:model="selected_section" id="sections_list" class="py-1 px-6 mb-3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                 <option disabled value="">-- {{ __('messages.select_section') }} --</option>
@@ -18,6 +15,9 @@
                 <option value="{{ $section->id }}">{{ $section->school->name }} - {{ $section->name }}</option>
                 @endforeach
             </select>
+            <x-text-input wire:model="search" class="py-1 px-3 mb-3" type="text"
+            placeholder="{{ __('messages.search') }}" />
+            
         </div>
         <!-- Table -->
         <div class="overflow-x-auto">
