@@ -13,13 +13,10 @@
         <div class="flex flex-col md:flex-row justify-start gap-3">
             <x-text-input wire:model="search" class="py-1 px-3 mb-3 me-auto" type="text"
                 placeholder="{{ __('messages.search') }}" />
-
-            <form action="{{ route('voters.import') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="file" id="file" style="width : 110px;">
-                <x-primary-button type="submit">
-                    {{ __('messages.import') }}</x-primary-button>
-            </form>
+            <div class=" flex items-center">
+                <input wire:model="file" type="file" name="file" id="file" style="width : 109px;">
+                <x-primary-button wire:click="import">{{ __('messages.import') }}</x-primary-button>
+            </div>
         </div>
         <!-- Table -->
         <div class="overflow-x-auto">

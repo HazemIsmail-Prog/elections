@@ -2,18 +2,22 @@
 
 namespace App\Http\Livewire;
 
+use App\Imports\VotersImport;
 use App\Models\Voter;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class VoterIndex extends Component
 {
-    use WithPagination;
+    use WithPagination,WithFileUploads;
 
     protected $listeners = ['VotersDataChanged' => '$refresh'];
 
     public $search;
+    public $file;
     public $pagination = 9;
 
     public function updatingSearch()
@@ -27,6 +31,11 @@ class VoterIndex extends Component
         $max = DB::table('Voters')->max('id') + 1;
         DB::statement("ALTER TABLE Voters AUTO_INCREMENT =  $max");
         $this->emit('VotersDataChanged');
+    }
+
+    public function import()
+    {
+        Excel::import(new VotersImport, $this->file);
     }
     public function render()
     {

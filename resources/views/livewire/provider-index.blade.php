@@ -25,6 +25,9 @@
                         <th class="p-2 whitespace-nowrap">
                             <div class="font-semibold text-start">{{ __('messages.name') }}</div>
                         </th>
+                        <th class="p-2 whitespace-nowrap">
+                            <div class="font-semibold text-start">{{ __('messages.mobile') }}</div>
+                        </th>
                         <th class="p-2 whitespace-nowrap"></th>
                     </tr>
                 </thead>
@@ -45,6 +48,9 @@
                                     </div>
                                     <div class="font-medium text-gray-800 dark:text-gray-200">{{ $provider->name }}</div>
                                 </div>
+                            </td>
+                            <td class="p-2 whitespace-nowrap">
+                                <div class="text-start">{{ $provider->phone }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="text-lg text-center">

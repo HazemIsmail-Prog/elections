@@ -42,8 +42,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/schools', SchoolIndex::class)->name('schools.index')->middleware('can:schools_menu');
         Route::get('/providers', ProviderIndex::class)->name('providers.index')->middleware('can:providers_menu');
         Route::get('/voters', VoterIndex::class)->name('voters.index')->middleware('can:voters_menu');
-
-        Route::post('/import_voters', [ImportVoterController::class,'import'])->name('voters.import');
     });
 
     Route::fallback(function() {

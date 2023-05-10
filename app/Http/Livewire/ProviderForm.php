@@ -21,10 +21,12 @@ class ProviderForm extends Component
         if (isset($this->provider['id'])) {
             return [
                 'provider.name' => ['required'],
+                'provider.phone' => ['required'],
             ];
         } else {
             return [
                 'provider.name' => ['required'],
+                'provider.phone' => ['required'],
             ];
         }
     }

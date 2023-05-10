@@ -14,6 +14,11 @@
                         autofocus autocomplete="name" />
                     <x-input-error class="mt-2" :messages="$errors->get('provider.name')" />
                 </div>
+                <div>
+                    <x-text-input placeholder="{{ __('messages.phone') }}" wire:model="provider.phone" type="number" class="mt-1 block w-full"
+                        autofocus autocomplete="phone" />
+                    <x-input-error class="mt-2" :messages="$errors->get('provider.phone')" />
+                </div>
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-4 space-x-1 border-t border-gray-200 rounded-b dark:border-gray-600">

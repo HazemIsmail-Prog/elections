@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Section;
 use App\Models\Voter;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -37,6 +36,7 @@ class VotingPage extends Component
     public function updatedSelectedSection()
     {
         $this->resetPage();
+        $this->reset('search');
     }
 
     public function mount()
