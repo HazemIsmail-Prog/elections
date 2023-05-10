@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataFeedController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ImportVoterController;
 use App\Http\Livewire\DashboardIndex;
 use App\Http\Livewire\PermissionIndex;
 use App\Http\Livewire\ProviderIndex;
@@ -41,6 +42,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/schools', SchoolIndex::class)->name('schools.index')->middleware('can:schools_menu');
         Route::get('/providers', ProviderIndex::class)->name('providers.index')->middleware('can:providers_menu');
         Route::get('/voters', VoterIndex::class)->name('voters.index')->middleware('can:voters_menu');
+
+        Route::post('/import_voters', [ImportVoterController::class,'import'])->name('voters.import');
     });
 
     Route::fallback(function() {

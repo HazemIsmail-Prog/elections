@@ -61,6 +61,7 @@ class UserForm extends Component
             $this->selected_sections = User::find($this->user['id'])->sections->pluck('id');
         } else {
             $this->modalTitle =  __('اضافة مستخدم');
+            $this->user['active'] = 1;
         }
         $this->showModal = true;
     }

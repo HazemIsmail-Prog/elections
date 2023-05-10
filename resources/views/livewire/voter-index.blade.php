@@ -8,10 +8,19 @@
         @endcan
     </header>
     <div class="p-3">
-        
+
         @livewire('voter-form')
-        <x-text-input wire:model="search" class="py-1 px-3 mb-3 me-auto" type="text"
-            placeholder="{{ __('messages.search') }}" />
+        <div class="flex flex-col md:flex-row justify-start gap-3">
+            <x-text-input wire:model="search" class="py-1 px-3 mb-3 me-auto" type="text"
+                placeholder="{{ __('messages.search') }}" />
+
+            <form action="{{ route('voters.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="file" id="file" style="width : 110px;">
+                <x-primary-button type="submit">
+                    {{ __('messages.import') }}</x-primary-button>
+            </form>
+        </div>
         <!-- Table -->
         <div class="overflow-x-auto">
             <table class="table-auto w-full">
@@ -38,7 +47,8 @@
                 <tbody class="text-sm divide-y divide-gray-100 dark:divide-gray-500 dark:text-white">
 
                     @foreach ($voters as $voter)
-                        <tr class=" text-center transition duration-300 ease-in-out hover:bg-neutral-100 dark:hover:bg-gray-600">
+                        <tr
+                            class=" text-center transition duration-300 ease-in-out hover:bg-neutral-100 dark:hover:bg-gray-600">
                             <td class="p-2 whitespace-nowrap">
                                 <div class="text-start">{{ $voter->id }}</div>
                             </td>
@@ -46,17 +56,19 @@
                                 <div class="flex items-center">
                                     <div class="w-10 h-10 shrink-0 me-2 sm:me-3">
                                         <img class="rounded-full"
-                                        src="{{ 'https://ui-avatars.com/api/?name=' . urlencode($voter->name) . '&color=7F9CF5&background=EBF4FF' }}"
-                                        width="40" height="40" alt="Alex Shatov" />
+                                            src="{{ 'https://ui-avatars.com/api/?name=' . urlencode($voter->name) . '&color=7F9CF5&background=EBF4FF' }}"
+                                            width="40" height="40" alt="Alex Shatov" />
                                     </div>
                                     <div class="font-medium text-gray-800 dark:text-gray-200">{{ $voter->name }}</div>
                                 </div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
-                                <div class="text-start">{{ $voter->provider->name }}</div>
+                                <div class="text-start">{{ @$voter->provider->name }}</div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
-                                <div class="text-start">{{ $voter->section->school->name }} - ({{ $voter->section->name }}) </div>
+                                <div class="text-start">{{ @$voter->section->school->name }} -
+                                    ({{ @$voter->section->name }})
+                                </div>
                             </td>
                             <td class="p-2 whitespace-nowrap">
                                 <div class="text-lg text-center">
