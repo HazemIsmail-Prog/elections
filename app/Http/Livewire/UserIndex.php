@@ -36,7 +36,6 @@ class UserIndex extends Component
                 $q->where('id','!=',1);
             })
             ->paginate($this->pagination),
-
         ]);
     }
 }

@@ -14,9 +14,7 @@ class SchoolObserver
      */
     public function created(School $school)
     {
-        for ($i = 1; $i <= 7; $i++) {
-            $school->sections()->create(['name' => 'لجنة ' . $i]);
-        }
+        //
     }
 
     /**

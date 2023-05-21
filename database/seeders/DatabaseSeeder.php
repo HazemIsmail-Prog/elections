@@ -20,10 +20,11 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RoleSeeder::class,
             PermissionSeeder::class,
-            // SchoolSeeder::class,
-            // SectionSeeder::class,
+            SchoolSeeder::class,
+            SectionSeeder::class,
             // ProviderSeeder::class,
             // VoterSeeder::class,
+            SectionUserSeeder::class,
         ]);
     }
 }

@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <!-- Table body -->
-                <tbody class="text-sm divide-y divide-gray-100 dark:divide-gray-500 dark:text-white">
+                <tbody class="text-sm divide-y dark:text-white">
 
                     @foreach ($roles as $role)
                         <tr class=" text-center transition duration-300 ease-in-out hover:bg-neutral-100 dark:hover:bg-gray-600">

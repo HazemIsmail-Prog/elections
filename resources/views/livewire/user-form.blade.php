@@ -68,26 +68,27 @@
                                     <thead class="border-b font-medium dark:border-gray-700">
                                         <tr class=" text-center">
                                             <th scope="col" class="px-2 py-4 text-center">{{ __('المقر') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 1') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 2') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 3') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 4') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 5') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 6') }}</th>
-                                            <th scope="col" class="px-2 py-4 text-center">{{ __('لجنة 7') }}</th>
+                                            <th scope="col" class="px-2 py-4 text-center">{{ __('اللجان') }}</th>
                                         </tr>
                                     </thead>
                                     @foreach ($schools as $school)
                                         <tr
                                             class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-gray-700 dark:hover:bg-neutral-600">
                                             <td class="whitespace-nowrap px-2 py-4 text-start">{{ $school->name }}</td>
-                                            @foreach ($school->sections as $section)
-                                                <td class="whitespace-nowrap px-2 py-4 text-center">
-                                                    <input id="section{{ $section->id }}" type="checkbox"
-                                                        value="{{ $section->id }}" wire:model="selected_sections"
-                                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                </td>
-                                            @endforeach
+                                            <td class="whitespace-nowrap px-2 py-4 text-center">
+                                                <div class="flex flex-wrap gap-3">
+                                                    @foreach ($school->sections as $section)
+                                                        <div class=" w-20">
+                                                            <input id="section{{ $section->id }}" type="checkbox"
+                                                                value="{{ $section->id }}"
+                                                                wire:model="selected_sections"
+                                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="section{{ $section->id }}"
+                                                                class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $section->name }}</label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </table>

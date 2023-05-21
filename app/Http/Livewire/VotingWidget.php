@@ -6,7 +6,7 @@ use App\Models\Voter;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class VotingPage extends Component
+class VotingWidget extends Component
 {
     use WithPagination;
 
@@ -42,24 +42,22 @@ class VotingPage extends Component
     public function mount()
     {
         $this->sections = auth()->user()->sections->load('school');
-        if($this->sections->count() == 1){
+        if ($this->sections->count() == 1) {
             $this->selected_section = $this->sections->first()->id;
-        }else{
+        } else {
             $this->selected_section = "";
         }
     }
 
     public function render()
     {
-        return view('livewire.voting-page', [
+        return view('livewire.voting-widget', [
             'voters' => Voter::query()
-                ->whereIn('section_id', auth()->user()->sections->pluck('id'))
-                ->where('section_id', $this->selected_section)
-                ->where('vote_status',0)
+                ->where('vote_status', 1)
                 ->when($this->search, function ($q) {
                     $q->where('name', 'like', '%' . $this->search . '%');
                 })
-                ->orderBy('name')
+                ->orderBy('vote_date_time','desc')
                 ->paginate(10)
         ]);
     }

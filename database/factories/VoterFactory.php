@@ -22,7 +22,7 @@ class VoterFactory extends Factory
             'letter' => fake()->name(),
             'gender' => fake()->numberBetween(0, 1),
             'provider_id' => fake()->numberBetween(1, 20),
-            'section_id' => fake()->numberBetween(1, 140),
+            'section_id' => fake()->numberBetween(1, 201),
             // 'vote_status' => fake()->numberBetween(0, 1),
         ];
     }
